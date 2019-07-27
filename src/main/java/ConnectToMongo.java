@@ -295,6 +295,7 @@ public class ConnectToMongo {
         for(Document d:findIterable){
             Document id = (Document) d .get("_id");
             String lemma = id.getString("lemma");
+            System.out.println(lemma + " -- " + id);
             //System.out.println(lemma + "---" + d.getDouble("value").intValue());
             wordFrequencies.add(new WordFrequency(lemma, d.getDouble("value").intValue()));
         }
