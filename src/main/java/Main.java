@@ -15,8 +15,8 @@ import java.util.stream.Stream;
 
 public class Main {
     private static ConnectToMongo connectToMAADB = new ConnectToMongo();
-    private static final String EMOTICONS = ";p|:p|>_<|B-\\)|:\\)|:-\\)|:'\\)|:'-\\)|:D|:-D|:\\'-\\)|:\\'-\\)|:o\\)|:\\]|:3|:c\\)|:>|=\\]|8\\)|=\\)|:\\}|:\\^\\)|8-D|8D|x-D|xD|X-D|XD|=-D|=D|=-3|=3|B\\^D|:\\*|:\\^\\*|\\( \\'\\}\\{\\' \\)|\\^\\^|\\(\\^_\\^\\)|\\^-\\^|\\^.\\^|\\^3\\^|\\^L\\^|d:|:\\(|:-\\(|:'\\(|:'-\\(|>:\\[|:-c|:c|:-<|:<|:-\\[|:\\[|:\\{|:\\'-\\(|_\\(|:\\'\\[|='\\(|' \\[|='\\[|:'-<|:' <|:'<|='<|=' <|T_T|T.T|\\(T_T\\)|y_y|y.y|\\(Y_Y\\)|;-;|;_;|;.;|:_:|o .__. o|.-.";
-    private static final List<String> STOP_WORDS_ARRAY = new ArrayList<>(Arrays.asList("<<",">>","=","_","let","go","0","1","2","3","4","5","6","7","8","9","just","like","now","get","know","will","one","username","url","o","I", "\\", "/", "!!", "?!", "??", "!?", "`", "``", "''", "-lrb-", "-rrb-", "-lsb-", "-rsb-", ",", ".", ":", ";", "\"", "'", "?", "<", ">", "{", "}", "[", "]", "+", "-", "(", ")", "&", "%", "$", "@", "!", "^", "#", "*", "..", "...", "'ll", "'s", "'m", "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are", "aren't", "as", "at", "be", "because", "been", "before", "being", "below", "between", "both", "but", "by", "can", "can't", "cannot", "could", "couldn't", "did", "didn't", "do", "does", "doesn't", "doing", "don't", "down", "during", "each", "few", "for", "from", "further", "had", "hadn't", "has", "hasn't", "have", "haven't", "having", "he", "he'd", "he'll", "he's", "her", "here", "here's", "hers", "herself", "him", "himself", "his", "how", "how's", "i", "i'd", "i'll", "i'm", "i've", "if", "in", "into", "is", "isn't", "it", "it's", "its", "itself", "let's", "me", "more", "most", "mustn't", "my", "myself", "no", "nor", "not", "of", "off", "on", "once", "only", "or", "other", "ought", "our", "ours", "ourselves", "out", "over", "own", "same", "shan't", "she", "she'd", "she'll", "she's", "should", "shouldn't", "so", "some", "such", "than", "that", "that's", "the", "their", "theirs", "them", "themselves", "then", "there", "there's", "these", "they", "they'd", "they'll", "they're", "they've", "this", "those", "through", "to", "too", "under", "until", "up", "very", "was", "wasn't", "we", "we'd", "we'll", "we're", "we've", "were", "weren't", "what", "what's", "when", "when's", "where", "where's", "which", "while", "who", "who's", "whom", "why", "why's", "with", "won't", "would", "wouldn't", "you", "you'd", "you'll", "you're", "you've", "your", "yours", "yourself", "yourselves", "###", "return", "arent", "cant", "couldnt", "didnt", "doesnt", "dont", "hadnt", "hasnt", "havent", "hes", "heres", "hows", "im", "isnt", "its", "lets", "mustnt", "shant", "shes", "shouldnt", "thats", "theres", "theyll", "theyre", "theyve", "wasnt", "were", "werent", "whats", "whens", "wheres", "whos", "whys", "wont", "wouldnt", "youd", "youll", "youre", "youve"));
+    private static final String EMOTICONS = ":d|o.o|;p|:p|>_<|B-\\)|:\\)|:-\\)|:'\\)|:'-\\)|:D|:-D|:\\'-\\)|:\\'-\\)|:o\\)|:\\]|:3|:c\\)|:>|=\\]|8\\)|=\\)|:\\}|:\\^\\)|8-D|8D|x-D|xD|X-D|XD|=-D|=D|=-3|=3|B\\^D|:\\*|:\\^\\*|\\( \\'\\}\\{\\' \\)|\\^\\^|\\(\\^_\\^\\)|\\^-\\^|\\^.\\^|\\^3\\^|\\^L\\^|d:|:\\(|:-\\(|:'\\(|:'-\\(|>:\\[|:-c|:c|:-<|:<|:-\\[|:\\[|:\\{|:\\'-\\(|_\\(|:\\'\\[|='\\(|' \\[|='\\[|:'-<|:' <|:'<|='<|=' <|T_T|T.T|\\(T_T\\)|y_y|y.y|\\(Y_Y\\)|;-;|;_;|;.;|:_:|o .__. o|.-.";
+    private static final List<String> STOP_WORDS_ARRAY = new ArrayList<>(Arrays.asList("ta","rt","dx","see","na","d","<<",">>","=","_","let","go","0","1","2","3","4","5","6","7","8","9","just","like","now","get","know","will","one","username","url","o","I", "\\", "/", "!!", "?!", "??", "!?", "`", "``", "''", "-lrb-", "-rrb-", "-lsb-", "-rsb-", ",", ".", ":", ";", "\"", "'", "?", "<", ">", "{", "}", "[", "]", "+", "-", "(", ")", "&", "%", "$", "@", "!", "^", "#", "*", "..", "...", "'ll", "'s", "'m", "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are", "aren't", "as", "at", "be", "because", "been", "before", "being", "below", "between", "both", "but", "by", "can", "can't", "cannot", "could", "couldn't", "did", "didn't", "do", "does", "doesn't", "doing", "don't", "down", "during", "each", "few", "for", "from", "further", "had", "hadn't", "has", "hasn't", "have", "haven't", "having", "he", "he'd", "he'll", "he's", "her", "here", "here's", "hers", "herself", "him", "himself", "his", "how", "how's", "i", "i'd", "i'll", "i'm", "i've", "if", "in", "into", "is", "isn't", "it", "it's", "its", "itself", "let's", "me", "more", "most", "mustn't", "my", "myself", "no", "nor", "not", "of", "off", "on", "once", "only", "or", "other", "ought", "our", "ours", "ourselves", "out", "over", "own", "same", "shan't", "she", "she'd", "she'll", "she's", "should", "shouldn't", "so", "some", "such", "than", "that", "that's", "the", "their", "theirs", "them", "themselves", "then", "there", "there's", "these", "they", "they'd", "they'll", "they're", "they've", "this", "those", "through", "to", "too", "under", "until", "up", "very", "was", "wasn't", "we", "we'd", "we'll", "we're", "we've", "were", "weren't", "what", "what's", "when", "when's", "where", "where's", "which", "while", "who", "who's", "whom", "why", "why's", "with", "won't", "would", "wouldn't", "you", "you'd", "you'll", "you're", "you've", "your", "yours", "yourself", "yourselves", "###", "return", "arent", "cant", "couldnt", "didnt", "doesnt", "dont", "hadnt", "hasnt", "havent", "hes", "heres", "hows", "im", "isnt", "its", "lets", "mustnt", "shant", "shes", "shouldnt", "thats", "theres", "theyll", "theyre", "theyve", "wasnt", "were", "werent", "whats", "whens", "wheres", "whos", "whys", "wont", "wouldnt", "youd", "youll", "youre", "youve"));
     private static int threshold = 500;
 
 
@@ -35,7 +35,6 @@ public class Main {
         System.out.println("5. Genera le hashtag clouds");
         System.out.println("6. Genera le emoticon clouds");
         System.out.println("7. Genera le emoji clouds");
-        //System.out.println("6. Genera le emoticon clouds");
         System.out.println("0. Termina");
 
         // handle user commands
@@ -75,7 +74,7 @@ public class Main {
                     //Ottieni hashtag clouds SENZA considerare lexicalresource
                     calculateClouds("reducedemoji");
                     break;
-                case "9":
+                case "1000":
                     test();
                     break;
                 case "1001":
@@ -111,7 +110,6 @@ public class Main {
     }
 
     private static void lexicalResources(){
-        WordsFrequenceCalculator wordsFrequenceCalculator = new WordsFrequenceCalculator();
         ArrayList<LexicalResource> words = new ArrayList<>();
 
         //Calcolo le frequenze delle parole
@@ -119,7 +117,7 @@ public class Main {
             try (Stream<Path> walk = Files.walk(Paths.get("./src/main/resources/risorse_lessicali/" + name))) {
                 List<String> files = walk.filter(Files::isRegularFile)
                         .map(Path::toString).collect(Collectors.toList());
-                words.addAll(wordsFrequenceCalculator.countFrequences(id, files));
+                words.addAll(loadLexRes(id, files));
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -127,8 +125,14 @@ public class Main {
         System.out.println("1) Lettura da file eseguita");
 
         //Salva nel DB
-        //connectToMAADB.deleteTable("lexicalresource");
+        /*
+        connectToMAADB.deleteTable("lexicalresource");
+        connectToMAADB.deleteTable("hashtag");
+        connectToMAADB.deleteTable("emoji");
+        connectToMAADB.deleteTable("emoticon");
         connectToMAADB.saveLexicalResource(words);
+
+         */
         System.out.println("2) Salvataggio nel DB terminato\n");
 
 
@@ -194,6 +198,7 @@ public class Main {
                             emojis.add(unicodeOutlierMatcher.group());
                         }
 
+                        //Elimina emoji dalla stringa
                         utf8tweet = unicodeOutlierMatcher.replaceAll("");
 
                         //Salva emoticons
@@ -203,6 +208,7 @@ public class Main {
                             emoticons.add(mat.group());
                         }
 
+                        //Elimina emoticons dalla stringa
                         utf8tweet = mat.replaceAll("");
 
 
@@ -229,8 +235,10 @@ public class Main {
                             }
                         }).collect(Collectors.joining(" "));
 
-                        //Lemmatizza la frase
+                        //Tutto minuscolo
                         newString = newString.toLowerCase();
+
+                        //Lemmatizza la frase
                         try{
                             if(newString.replace(" ", "").length()>0) {
                                 Sentence sentence = new Sentence(newString);
@@ -241,7 +249,6 @@ public class Main {
                                     newString = newString + str + " ";
                                 }
                             }
-                            //System.out.println(newString);
                         }catch (IllegalStateException e){
                             System.out.println("-"+newString+"-");
                             e.printStackTrace();
@@ -256,10 +263,11 @@ public class Main {
                         strAllWords = strAllWords + " " + l;
                     }
 
+                    //Ottieni un array di parole, non un array di frasi
                     List<String> words = Arrays.asList(strAllWords.split(" "));
-                    List<String> noStopWords = words.stream().filter(e->!STOP_WORDS_ARRAY.contains(e)).collect(Collectors.toList());
 
-                    System.out.println("Creata stringa unica");
+                    //Rimuovi le stop words
+                    List<String> noStopWords = words.stream().filter(e->!STOP_WORDS_ARRAY.contains(e)).collect(Collectors.toList());
 
                     connectToMAADB.addLexRes(noStopWords, id);
                     connectToMAADB.addHashtags(hashtags, id);
@@ -275,7 +283,7 @@ public class Main {
     }
 
     private static void test(){
-        String prova = "Oggi ciao 3423 59,8 53.9 432.93485 993218 9 1 ci6 se77e ciao porco 44 5tt5 6s 9";
+        String prova = "Oggi ciao 3423 59,8 53.9 432.93485 993218 9 1 ci6 se77e ciao 44 5tt5 6s 9";
         List<String> stringList = Arrays.asList(prova.split(" "));
 
         String newString = Arrays.stream(prova.split(" ")).filter(s->{
@@ -290,5 +298,48 @@ public class Main {
 
         System.out.println(newString);
 
+    }
+
+    static List<LexicalResource> loadLexRes(int sentimentId, List<String> paths) throws IOException {
+        HashMap<String, LexicalResource> lexicalResources = new HashMap<>();
+
+        //Per ogni file
+        for(String path : paths){
+            //Leggi le righe del file
+            List<String> allLines = Files.readAllLines(Paths.get(path), StandardCharsets.UTF_8);
+
+            //Se la risorsa ha il tipo EmoSN
+            if(Paths.get(path).getFileName().toString().startsWith("EmoSN")){
+                //Per ogni riga (parola) letta
+                allLines.forEach(line -> {
+                    //Prendi il valore della mappa
+                    LexicalResource lr = lexicalResources.get(line);
+                    if(lr == null){ //Se non esiste quel valore crealo
+                        lexicalResources.put(line, new LexicalResource(line, sentimentId, "EmoSN"));
+                    }else{ //Altrimenti aumenta solo il contatore delle frequenze
+                        lr.addFreq("EmoSN");
+                    }
+                });
+            }else if(Paths.get(path).getFileName().toString().startsWith("NRC")){
+                allLines.forEach(line -> {
+                    LexicalResource lr = lexicalResources.get(line);
+                    if(lr == null){
+                        lexicalResources.put(line, new LexicalResource(line, sentimentId, "NRC"));
+                    }else{
+                        lr.addFreq("NRC");
+                    }
+                });
+            }else if(Paths.get(path).getFileName().toString().startsWith("sentisense")){
+                allLines.forEach(line -> {
+                    LexicalResource lr = lexicalResources.get(line);
+                    if(lr == null){
+                        lexicalResources.put(line, new LexicalResource(line, sentimentId, "sentisense"));
+                    }else{
+                        lr.addFreq("sentisense");
+                    }
+                });
+            }
+        }
+        return new ArrayList<>(lexicalResources.values());
     }
 }

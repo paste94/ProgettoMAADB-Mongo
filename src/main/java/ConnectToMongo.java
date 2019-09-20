@@ -2,6 +2,7 @@ import com.kennycason.kumo.CollisionMode;
 import com.kennycason.kumo.WordCloud;
 import com.kennycason.kumo.WordFrequency;
 import com.kennycason.kumo.bg.CircleBackground;
+import com.kennycason.kumo.font.scale.LinearFontScalar;
 import com.kennycason.kumo.font.scale.SqrtFontScalar;
 import com.kennycason.kumo.nlp.FrequencyAnalyzer;
 import com.kennycason.kumo.palette.ColorPalette;
@@ -13,11 +14,19 @@ import org.bson.Document;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import static com.mongodb.client.model.Filters.*;
+
+/*
+Per vedere distribuzione della collezione:
+db.lexicalresource.getShardDistribution()
+
+ */
 
 public class ConnectToMongo {
     String shards = "mongodb://localhost:27000";
@@ -295,41 +304,23 @@ public class ConnectToMongo {
         for(Document d:findIterable){
             Document id = (Document) d .get("_id");
             String lemma = id.getString("lemma");
-            System.out.println(lemma + " -- " + id);
-            //System.out.println(lemma + "---" + d.getDouble("value").intValue());
             wordFrequencies.add(new WordFrequency(lemma, d.getDouble("value").intValue()));
         }
 
-        /*
-
-        final Dimension dimension = new Dimension(400, 400);
-        final WordCloud wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
-        wordCloud.setPadding(2);
-        wordCloud.setBackground(new CircleBackground(200));
-        wordCloud.setColorPalette(new ColorPalette(new Color(0x4055F1), new Color(0x408DF1), new Color(0x40AAF1), new Color(0x40C5F1), new Color(0x40D3F1), new Color(0xFFFFFF)));
-        wordCloud.build(wordFrequencies);
-        wordCloud.writeToFile("./src/main/resources/word_clouds/" + fileName);
-        System.out.println("Generato file " + fileName + ".png");
-
-
-         */
-
-        final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
-        //final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load("text/my_text_file.txt");
+        System.out.println(wordFrequencies);
         final Dimension dimension = new Dimension(600, 600);
         final WordCloud wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
         wordCloud.setPadding(2);
         wordCloud.setBackground(new CircleBackground(300));
         wordCloud.setColorPalette(new ColorPalette(new Color(0x4055F1), new Color(0x408DF1), new Color(0x40AAF1), new Color(0x40C5F1), new Color(0x40D3F1), new Color(0xFFFFFF)));
-        wordCloud.setFontScalar(new SqrtFontScalar(10, 40));
+        wordCloud.setFontScalar(new LinearFontScalar(10, 40));
         wordCloud.build(wordFrequencies);
-        wordCloud.writeToFile("./src/main/resources/word_clouds/" + fileName);
+        wordCloud.writeToFile("./src/main/resources/word_clouds/" + fileName.replace(".txt", ".png"));
+        System.out.println("Generato file " + fileName + ".png");
 
         mongoClient.close();
 
 
     }
-
-
 
 }
